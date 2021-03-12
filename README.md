@@ -17,7 +17,7 @@ The filename is optional, if no filename is provided it will run the shell.
 
 ## Hello World
 ```
-upload "Hello, World!"
+output "Hello, World!"
 ```
 
 ## Variables
@@ -37,8 +37,8 @@ y => "Mark"
 To use the variables, simply reference them
 
 ```
-upload x
-upload y
+output x
+output y
 ```
 
 ### Case Sensitive 
@@ -75,7 +75,7 @@ The Join Operator ( &&& ) lets you join 2 statements into 1.
 
 Example
 ```
-upload "Hi" &&& upload "Bye"
+output "Hi" &&& output "Bye"
 ```
 
 ### If Else 
@@ -94,7 +94,7 @@ Example
 ```
 name => "John" &&&
 if name == "John" =>
-  upload "hi " + name
+  output "hi " + name
 else =>
-  upload "bye " + name
+  output "bye " + name
 ```
