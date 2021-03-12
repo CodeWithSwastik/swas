@@ -57,3 +57,32 @@ Operators are used to perform operations on variables and values.
 | ==       | Equality       | x == y  |
 | inc      | Increment      | inc x   |
 | dec      | Decrement      | dec x   |
+
+### Join Operator ( &&& )
+The Join Operator ( &&& ) lets you join 2 statements into 1. 
+
+Example
+```
+upload "Hi" &&& upload "Bye"
+```
+
+### If Else
+An "if else statement" is written by using the if and else keywords.
+
+Syntax
+```
+if condition => 
+  statement
+else =>
+  statement
+```
+Note: The indentation isn't needed, it has been used here for readability
+
+Example
+```
+name => "John" &&&
+if name == "John" =>
+  upload "hi " + name
+else
+  upload "bye " + name
+```
