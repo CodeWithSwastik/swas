@@ -2,6 +2,7 @@
 This is a language that was made for fun.
 
 # Installation
+Step 0: Make sure you have python installed <br>
 Step 1. Clone this repo or download it as a zip <br>
 Step 2. Run `pip install -r requirements.txt`
 
