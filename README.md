@@ -83,6 +83,6 @@ Example
 name => "John" &&&
 if name == "John" =>
   upload "hi " + name
-else
+else =>
   upload "bye " + name
 ```
