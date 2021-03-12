@@ -66,9 +66,9 @@ Operators are used to perform operations on variables and values.
 | ==       | Equals                   | x == y  |
 | !=       | Not Equals               | x != y  |
 | >        | Greater than             | x > y   |
-| >=       | Greater than or equal to | x / y   |
-| <        | Lesser than              | x % y   |
-| <=       | Lesser than or equal to  | x == y  |
+| >=       | Greater than or equal to | x >= y  |
+| <        | Lesser than              | x < y   |
+| <=       | Lesser than or equal to  | x <= y  |
 
 
 ### Join Operator ( &&& )
