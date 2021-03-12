@@ -1,6 +1,9 @@
 # The Swas programming language
 This is a language that was made for fun.
 
+# Installation
+You can clone this repo or download it as a zip and then run swas.py
+
 # Running 
 ```bash
 python swas.py [filename]
