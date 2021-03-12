@@ -31,8 +31,20 @@ def evaluate(tree):
         return evaluate(tree[1]) / evaluate(tree[2])
     elif rule == 'mod':
         return evaluate(tree[1]) % evaluate(tree[2])
+    
     elif rule == 'equals':
         return int(evaluate(tree[1]) == evaluate(tree[2]))
+    elif rule == 'ne':
+        return int(evaluate(tree[1]) != evaluate(tree[2]))
+    elif rule == 'gt':
+        return int(evaluate(tree[1]) > evaluate(tree[2]))
+    elif rule == 'gte':
+        return int(evaluate(tree[1]) >= evaluate(tree[2]))
+    elif rule == 'lt':
+        return int(evaluate(tree[1]) < evaluate(tree[2]))
+    elif rule == 'lte':
+        return int(evaluate(tree[1]) <= evaluate(tree[2]))
+
 
     elif rule == 'uminus':
         return -evaluate(tree[1])
