@@ -102,7 +102,7 @@ def execute(fp):
 def shell():
     lexer = SwasLexer()
     parser = SwasParser()
-    print("Swas 1.1")
+    print("Swas 1.2")
     while True:
         try:
             text = input('swas > ')
