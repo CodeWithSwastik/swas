@@ -5,7 +5,7 @@ count => 0 &&&
 
 while count < terms
 do
-	upload n1 &&&
+	output n1 &&&
 	nth => n1 + n2 &&&
 	n1 => n2 &&&
 	n2 => nth &&&
