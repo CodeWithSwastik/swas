@@ -2,7 +2,10 @@
 This is a language that was made for fun.
 
 # Installation
-You can clone this repo or download it as a zip and then run swas.py
+Step 1. Clone this repo or download it as a zip
+Step 2. Run `pip install -r requirements.txt`
+
+This is all that you need to do to start writing in swas lang.
 
 # Running 
 ```bash
