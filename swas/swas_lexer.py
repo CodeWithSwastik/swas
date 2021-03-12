@@ -18,7 +18,7 @@ class SwasLexer(Lexer):
     NAME['else'] = ELSE
     NAME['while'] = WHILE
     NAME['do'] = DO
-    NAME['upload'] = PRINT
+    NAME['output'] = PRINT
     NAME['inc'] = INC
     NAME['dec'] = DEC
 
