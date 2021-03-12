@@ -1,6 +1,8 @@
 from .swas_lexer import SwasLexer
 from .swas_parser import SwasParser
 
+VERSION = "1.3"
+
 names = {}
 def evaluate(tree):
     global names
@@ -102,7 +104,7 @@ def execute(fp):
 def shell():
     lexer = SwasLexer()
     parser = SwasParser()
-    print("Swas 1.2")
+    print(f"Swas {VERSION}")
     while True:
         try:
             text = input('swas > ')
