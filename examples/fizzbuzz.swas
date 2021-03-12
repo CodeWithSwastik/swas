@@ -5,14 +5,14 @@ while counter < num
 do
     if counter % 3 == 0 =>
         if counter % 5 == 0 =>
-            upload "FizzBuzz" 
+            output "FizzBuzz" 
         else =>
-            upload "Fizz"
+            output "Fizz"
     else =>
         if counter % 5 == 0 =>
-            upload "Buzz"
+            output "Buzz"
         else =>
-            upload counter
+            output counter
 
     &&&
     inc counter
