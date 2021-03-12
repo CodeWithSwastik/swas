@@ -1,3 +1,6 @@
+from sly import Parser
+from .swas_lexer import SwasLexer
+
 class SwasParser(Parser):
     tokens = SwasLexer.tokens
     #debugfile = "log.out"
