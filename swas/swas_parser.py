@@ -1,11 +1,8 @@
-from sly import Parser
-from .swas_lexer import SwasLexer
-
 class SwasParser(Parser):
     tokens = SwasLexer.tokens
     #debugfile = "log.out"
     precedence = (
-        ('left', EQUALS), 
+        ('left', EQUALS, LT , GT ,NE, GTE, LTE), 
         ('left', PLUS, MINUS),
         ('left', TIMES, DIVIDE),      
         ('left', MOD),
@@ -71,6 +68,27 @@ class SwasParser(Parser):
     @_('expr EQUALS expr')
     def expr(self, p):
         return ('equals', p.expr0, p.expr1)
+
+    @_('expr NE expr')
+    def expr(self, p):
+        return ('ne', p.expr0, p.expr1)
+
+    @_('expr GT expr')
+    def expr(self, p):
+        return ('gt', p.expr0, p.expr1)
+
+    @_('expr GTE expr')
+    def expr(self, p):
+        return ('gte', p.expr0, p.expr1)
+
+    @_('expr LT expr')
+    def expr(self, p):
+        return ('lt', p.expr0, p.expr1)
+
+    @_('expr LTE expr')
+    def expr(self, p):
+        return ('lte', p.expr0, p.expr1)
+
 
     @_('INC NAME %prec UMINUS')
     def expr(self, p):
