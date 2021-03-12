@@ -40,8 +40,6 @@ class SwasLexer(Lexer):
     LTE = r'<='
     NE = r'!='
 
-    # Ignored pattern
-    ignore_newline = r'\n+'
 
     # String
     @_(r'''("[^"\\]*(\\.[^"\\]*)*"|'[^'\\]*(\\.[^'\\]*)*')''')
