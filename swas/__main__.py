@@ -1,5 +1,5 @@
 from sys import argv
-from src.executor import execute, shell
+from .executor import execute, shell
 
 def main():
     

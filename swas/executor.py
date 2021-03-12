@@ -1,5 +1,5 @@
-from swas_lexer import SwasLexer
-from swas_parser import SwasParser
+from .swas_lexer import SwasLexer
+from .swas_parser import SwasParser
 
 names = {}
 def evaluate(tree):
