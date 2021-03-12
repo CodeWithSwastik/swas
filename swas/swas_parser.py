@@ -39,7 +39,6 @@ class SwasParser(Parser):
         return ('assign', p.NAME, p.expr)
 
     @_('IF expr ARROW statement ELSE ARROW statement')
-
     def statement(self, p):
         return ('if-else', p.expr,p.statement0, p.statement1)
 
