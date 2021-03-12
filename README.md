@@ -98,3 +98,25 @@ if name == "John" =>
 else =>
   output "bye " + name
 ```
+
+### While Do
+With the while loop you can execute a set of statements as long as a condition is true.
+
+Syntax
+```
+while condition 
+do
+  statement
+```
+
+Note: The indentation isn't needed, it has been used here for readability
+
+Example 
+```
+ignore This Program outputs numbers from 1 to 10
+start => 1 &&&
+end => 10 &&&
+while start != end
+do 
+  output start &&& inc start 
+```
