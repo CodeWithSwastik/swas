@@ -47,6 +47,8 @@ Note: Variables names are case sensitive i.e. `a => 5` is not the same as `A => 
 ## Operators
 Operators are used to perform operations on variables and values.
 
+### Assignment Operators
+
 | Operator | Name           | Example |
 |----------|----------------|---------|
 | +        | Addition       | x + y   |
@@ -54,9 +56,19 @@ Operators are used to perform operations on variables and values.
 | *        | Multiplication | x * y   |
 | /        | Division       | x / y   |
 | %        | Modulus        | x % y   |
-| ==       | Equality       | x == y  |
 | inc      | Increment      | inc x   |
 | dec      | Decrement      | dec x   |
+
+### Logical Operators
+| Operator | Name                     | Example |
+|----------|--------------------------|---------|
+| ==       | Equals                   | x == y  |
+| !=       | Not Equals               | x != y  |
+| >        | Greater than             | x > y   |
+| >=       | Greater than or equal to | x / y   |
+| <        | Lesser than              | x % y   |
+| <=       | Lesser than or equal to  | x == y  |
+
 
 ### Join Operator ( &&& )
 The Join Operator ( &&& ) lets you join 2 statements into 1. 
@@ -66,7 +78,7 @@ Example
 upload "Hi" &&& upload "Bye"
 ```
 
-### If Else
+### If Else 
 An "if else statement" is written by using the if and else keywords.
 
 Syntax
