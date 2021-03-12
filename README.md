@@ -9,7 +9,7 @@ This is all that you need to do to start writing in swas lang.
 
 # Running 
 ```bash
-python swas.py [filename]
+python -m swas [filename]
 ```
 The filename is optional, if no filename is provided it will run the shell.
 
