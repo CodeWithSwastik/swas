@@ -10,5 +10,4 @@ def main():
         execute(fp)
 
 if __name__ == '__main__':
-    names = {}
     main()
