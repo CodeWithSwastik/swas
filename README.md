@@ -43,3 +43,17 @@ upload y
 
 ### Case Sensitive 
 Note: Variables names are case sensitive i.e. `a => 5` is not the same as `A => 5`
+
+## Operators
+Operators are used to perform operations on variables and values.
+
+| Operator | Name           | Example |
+|----------|----------------|---------|
+| +        | Addition       | x + y   |
+| -        | Subtraction    | x - y   |
+| *        | Multiplication | x * y   |
+| /        | Division       | x / y   |
+| %        | Modulus        | x % y   |
+| ==       | Equality       | x == y  |
+| inc      | Increment      | inc x   |
+| dec      | Decrement      | dec x   |
