@@ -48,7 +48,7 @@ Note: Variables names are case sensitive i.e. `a => 5` is not the same as `A => 
 ## Operators
 Operators are used to perform operations on variables and values.
 
-### Assignment Operators
+### Arithmetic Operators
 
 | Operator | Name           | Example |
 |----------|----------------|---------|
@@ -73,6 +73,9 @@ Operators are used to perform operations on variables and values.
 
 ### Join Operator ( &&& )
 The Join Operator ( &&& ) lets you join 2 statements into 1. 
+
+### The Assignment Operator ( => )
+The Assignment Operator ( => ) is used to assing a variable to a value.
 
 Example
 ```
