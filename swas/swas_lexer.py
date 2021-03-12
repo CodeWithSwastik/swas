@@ -4,8 +4,12 @@ from sly import Lexer
 class SwasLexer(Lexer):
     tokens = { NAME, NUMBER, PLUS, TIMES, MINUS, DIVIDE, MOD, ARROW, LPAREN, RPAREN,
                IF, ELSE, WHILE, DO, STRING, PRINT, INC, DEC, JOIN, EQUALS, GT, GTE, LT, LTE, NE}
+    
+    # Ignored patterns
+    ignore_newline = r'\n+'
+    ignore_comment = r'ignore.*\n*'
     ignore = ' \t'
-
+    
     # Tokens
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
     NUMBER = r'\d+'
