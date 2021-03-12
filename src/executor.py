@@ -1,8 +1,7 @@
-from sys import argv
 from swas_lexer import SwasLexer
 from swas_parser import SwasParser
 
-
+names = {}
 def evaluate(tree):
     global names
     try:
@@ -91,7 +90,7 @@ def execute(fp):
 def shell():
     lexer = SwasLexer()
     parser = SwasParser()
-    print("Swas 1.0.0")
+    print("Swas 1.1")
     while True:
         try:
             text = input('swas > ')
