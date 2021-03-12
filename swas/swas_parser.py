@@ -38,18 +38,14 @@ class SwasParser(Parser):
     def statement(self, p):
         return ('assign', p.NAME, p.expr)
 
-    @_('IF expr ARROW statement ELSE ARROW statement', 
-       'IF expr ARROW statement')
+    @_('IF expr ARROW statement ELSE ARROW statement')
+
     def statement(self, p):
-        try:
-            return ('if-else', p.expr,p.statement0, p.statement1)
-        except AttributeError:
-            return ('if-then', p.expr,p.statement)
+        return ('if-else', p.expr,p.statement0, p.statement1)
 
     @_('WHILE expr DO statement')
     def statement(self, p):
         return ('while', p.expr, p.statement)
-
 
     @_('expr PLUS expr')
     def expr(self, p):
