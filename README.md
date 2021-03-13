@@ -88,20 +88,20 @@ An "if else statement" is written by using the if and else keywords.
 
 Syntax
 ```
-if condition => 
-  statement
-else =>
-  statement
+if condition => {
+  statement }
+else => {
+  statement }
 ```
 Note: The indentation isn't needed, it has been used here for readability
 
 Example
 ```
 name => "John" &
-if name == "John" =>
-  output "hi " + name
-else =>
-  output "bye " + name
+if name == "John" => {
+  output "hi " + name }
+else => {
+  output "bye " + name }
 ```
 
 ### While Do
@@ -110,8 +110,9 @@ With the while loop you can execute a set of statements as long as a condition i
 Syntax
 ```
 while condition 
-do
+do {
   statement
+}
 ```
 
 Note: The indentation isn't needed, it has been used here for readability
@@ -122,6 +123,7 @@ ignore This Program outputs numbers from 1 to 10
 start => 1 &
 end => 10 &
 while start != end
-do 
+do {
   output start & inc start 
+}
 ```
