@@ -4,7 +4,7 @@ from sly import Lexer
 class SwasLexer(Lexer):
     tokens = { NAME, NUMBER, PLUS, TIMES, MINUS, DIVIDE, MOD, ARROW, LPAREN, RPAREN,
                IF, ELSE, WHILE, DO, STRING, PRINT, INPUT, INC, DEC, JOIN, EQ, GT, GTE, LT, LTE, NE, PASS,
-               LBRAC, RBRAC}
+               LBRAC, RBRAC, OR, AND}
     
     # Ignored patterns
     ignore_newline = r'\n+'
@@ -25,6 +25,8 @@ class SwasLexer(Lexer):
     NAME['inc'] = INC
     NAME['dec'] = DEC
     NAME['nothing'] = PASS
+    NAME['and'] = AND
+    NAME['or'] = OR
 
     # Operators
     PLUS = r'\+'

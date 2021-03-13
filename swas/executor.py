@@ -46,6 +46,10 @@ def evaluate(tree):
         return int(evaluate(tree[1]) < evaluate(tree[2]))
     elif rule == 'lte':
         return int(evaluate(tree[1]) <= evaluate(tree[2]))
+    elif rule == 'and':
+        return int(evaluate(tree[1]) and evaluate(tree[2]))
+    elif rule == 'or':
+        return int(evaluate(tree[1]) or evaluate(tree[2]))
 
 
     elif rule == 'uminus':

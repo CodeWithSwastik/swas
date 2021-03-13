@@ -5,6 +5,7 @@ class SwasParser(Parser):
     tokens = SwasLexer.tokens
     #debugfile = "log.out"
     precedence = (
+        ('left', OR, AND), 
         ('left', EQ, LT , GT ,NE, GTE, LTE), 
         ('left', PLUS, MINUS),
         ('left', TIMES, DIVIDE),      
@@ -97,6 +98,14 @@ class SwasParser(Parser):
     @_('expr LTE expr')
     def expr(self, p):
         return ('lte', p.expr0, p.expr1)
+
+    @_('expr AND expr')
+    def expr(self, p):
+        return ('and', p.expr0, p.expr1)
+
+    @_('expr OR expr')
+    def expr(self, p):
+        return ('or', p.expr0, p.expr1)
 
 
     @_('INC NAME %prec UMINUS')
