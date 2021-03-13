@@ -13,16 +13,22 @@ class SwasParser(Parser):
         ('left', WHILE, DO),
         ('left', JOIN),
         ('left', IF, ARROW,ELSE),        
-        ('left', PRINT)
+        ('left', PRINT, INPUT)
         )
 
     def __init__(self):
         self.names = { }
         self.prompt = True
 
+
+
     @_('PRINT statement')
     def statement(self, p):
         return ('print', p.statement)
+
+    @_('INPUT statement')
+    def statement(self, p):
+        return ('input', p.statement)
 
     @_('statement JOIN statement')
     def statement(self, p):
@@ -32,15 +38,15 @@ class SwasParser(Parser):
     def statement(self, p):
         return ('statement-expr', p.expr)
 
-    @_('NAME ARROW expr')
+    @_('NAME ARROW statement')
     def statement(self, p):
-        return ('assign', p.NAME, p.expr)
+        return ('assign', p.NAME, p.statement)
 
-    @_('IF expr ARROW statement ELSE ARROW statement')
+    @_('IF expr ARROW LBRAC statement RBRAC ELSE ARROW LBRAC statement RBRAC')
     def statement(self, p):
         return ('if-else', p.expr,p.statement0, p.statement1)
 
-    @_('WHILE expr DO statement')
+    @_('WHILE expr DO LBRAC statement RBRAC')
     def statement(self, p):
         return ('while', p.expr, p.statement)
 
