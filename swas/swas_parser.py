@@ -46,6 +46,11 @@ class SwasParser(Parser):
     def statement(self, p):
         return ('while', p.expr, p.statement)
 
+    @_('PASS')
+    def statement(self, p):
+        return ('pass')
+
+
     @_('expr PLUS expr')
     def expr(self, p):
         return ('plus', p.expr0, p.expr1)

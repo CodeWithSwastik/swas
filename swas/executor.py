@@ -8,13 +8,12 @@ def evaluate(tree):
     global names
     try:
         rule = tree[0]
-    except:
+    except TypeError:
         return print("Swas says: Error Above ^^^^^^")
 
     if rule == "join-statement":
         evaluate(tree[1])
         evaluate(tree[2])
-
     elif rule == 'statement-expr':
         value = evaluate(tree[1])
         return value
@@ -23,6 +22,7 @@ def evaluate(tree):
         name = tree[1]
         names[name] = value
         return value
+
     elif rule == 'times':
         return evaluate(tree[1]) * evaluate(tree[2])
     elif rule == 'plus':
@@ -72,6 +72,8 @@ def evaluate(tree):
         return names[tree[1]]
     elif rule == 'paren':
         return evaluate(tree[1])
+    elif rule == 'pass':
+        pass
     elif rule == 'print':
         value = evaluate(tree[1])
         print(value)
