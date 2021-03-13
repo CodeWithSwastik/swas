@@ -3,7 +3,7 @@ from sly import Lexer
 
 class SwasLexer(Lexer):
     tokens = { NAME, NUMBER, PLUS, TIMES, MINUS, DIVIDE, MOD, ARROW, LPAREN, RPAREN,
-               IF, ELSE, WHILE, DO, STRING, PRINT, INC, DEC, JOIN, EQUALS, GT, GTE, LT, LTE, NE}
+               IF, ELSE, WHILE, DO, STRING, PRINT, INC, DEC, JOIN, EQ, GT, GTE, LT, LTE, NE}
     
     # Ignored patterns
     ignore_newline = r'\n+'
@@ -33,7 +33,7 @@ class SwasLexer(Lexer):
     RPAREN = r'\)'
     MOD = r'%'
     JOIN = r'&&&'
-    EQUALS = r'=='
+    EQ = r'=='
     GT = r'>'
     GTE = r'>='
     LT = r'<'

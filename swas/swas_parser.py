@@ -5,7 +5,7 @@ class SwasParser(Parser):
     tokens = SwasLexer.tokens
     #debugfile = "log.out"
     precedence = (
-        ('left', EQUALS, LT , GT ,NE, GTE, LTE), 
+        ('left', EQ, LT , GT ,NE, GTE, LTE), 
         ('left', PLUS, MINUS),
         ('left', TIMES, DIVIDE),      
         ('left', MOD),
@@ -21,6 +21,11 @@ class SwasParser(Parser):
         self.prompt = True
 
 
+    @_('PRINT statement')
+    def statement(self, p):
+        return ('print', p.statement)
+
+
     @_('statement JOIN statement')
     def statement(self, p):
         return ('join-statement', p.statement0, p.statement1) 
@@ -28,11 +33,6 @@ class SwasParser(Parser):
     @_('expr')
     def statement(self, p):
         return ('statement-expr', p.expr)
-
-    @_('PRINT statement')
-    def statement(self, p):
-        return ('print', p.statement)
-
 
     @_('NAME ARROW expr')
     def statement(self, p):
@@ -66,7 +66,7 @@ class SwasParser(Parser):
     def expr(self, p):
         return ('mod', p.expr0, p.expr1)
 
-    @_('expr EQUALS expr')
+    @_('expr EQ expr')
     def expr(self, p):
         return ('equals', p.expr0, p.expr1)
 
