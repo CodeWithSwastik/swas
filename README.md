@@ -17,7 +17,7 @@ The filename is optional, if no filename is provided it will run the shell.
 # Getting Started
 
 ## Hello World
-```
+```js
 output "Hello, World!"
 ```
 
@@ -29,7 +29,7 @@ Swas has no command for declaring a variable.
 
 A variable is created the moment you first assign a value to it.
 
-```
+```js
 x => 5
 y => "Mark"
 ```
@@ -37,7 +37,7 @@ y => "Mark"
 ### Using Variables
 To use the variables, simply reference them
 
-```
+```js
 output x
 output y
 ```
@@ -75,7 +75,7 @@ Operators are used to perform operations on variables and values.
 The Join Operator ( & ) lets you join 2 statements into 1. 
 
 Example
-```
+```js
 output "Hi" & output "Bye"
 ```
 
@@ -87,17 +87,19 @@ The Assignment Operator ( => ) is used to assign a variable to a value.
 An "if else statement" is written by using the if and else keywords.
 
 Syntax
-```
+```js
 if condition => {
-  statement }
+  statement 
+}
 else => {
-  statement }
+  statement 
+}
 ```
 Note: The indentation isn't needed, it has been used here for readability
 
 Example
-```
-name => "John" &
+```js
+name => input "Enter your name: " &
 if name == "John" => {
   output "hi " + name }
 else => {
@@ -108,7 +110,7 @@ else => {
 With the while loop you can execute a set of statements as long as a condition is true.
 
 Syntax
-```
+```js
 while condition 
 do {
   statement
@@ -117,9 +119,8 @@ do {
 
 Note: The indentation isn't needed, it has been used here for readability
 
-Example 
-```
-ignore This Program outputs numbers from 1 to 10
+Example
+```js
 start => 1 &
 end => 10 &
 while start != end
