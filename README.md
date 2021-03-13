@@ -122,7 +122,7 @@ do {
 Note: The indentation isn't needed, it has been used here for readability
 
 Example
-```js
+```cpp
 start => 1 &
 end => 10 &
 
