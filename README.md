@@ -101,9 +101,11 @@ Example
 ```js
 name => input "Enter your name: " &
 if name == "John" => {
-  output "hi " + name }
+  output "hi," + name 
+}
 else => {
-  output "bye " + name }
+  output "bye," + name 
+}
 ```
 
 ### While Do
@@ -123,6 +125,7 @@ Example
 ```js
 start => 1 &
 end => 10 &
+
 while start != end
 do {
   output start & inc start 
