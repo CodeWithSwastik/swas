@@ -75,7 +75,7 @@ Operators are used to perform operations on variables and values.
 The Join Operator ( &&& ) lets you join 2 statements into 1. 
 
 ### The Assignment Operator ( => )
-The Assignment Operator ( => ) is used to assing a variable to a value.
+The Assignment Operator ( => ) is used to assign a variable to a value.
 
 Example
 ```
