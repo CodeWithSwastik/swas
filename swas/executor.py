@@ -52,14 +52,22 @@ def evaluate(tree):
         return -evaluate(tree[1])
     elif rule == 'inc':
         name = tree[1]
-        oldval = names[tree[1]]
+
+        try:        
+            oldval = names[tree[1]]
+        except KeyError:
+            return print(f"Swas says: {name} hasn't been defined!")        
         newval = oldval + 1
         
         names[name] = newval
         return newval
     elif rule == 'dec':
         name = tree[1]
-        oldval = names[tree[1]]
+        try:        
+            oldval = names[tree[1]]
+        except KeyError:
+            return print(f"Swas says: {name} hasn't been defined!") 
+
         newval = oldval - 1
         
         names[name] = newval
