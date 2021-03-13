@@ -20,11 +20,9 @@ class SwasParser(Parser):
         self.names = { }
         self.prompt = True
 
-
     @_('PRINT statement')
     def statement(self, p):
         return ('print', p.statement)
-
 
     @_('statement JOIN statement')
     def statement(self, p):
@@ -49,7 +47,6 @@ class SwasParser(Parser):
     @_('PASS')
     def statement(self, p):
         return ('pass')
-
 
     @_('expr PLUS expr')
     def expr(self, p):

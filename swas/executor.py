@@ -65,7 +65,10 @@ def evaluate(tree):
         names[name] = newval
         return newval
     elif rule == 'number':
-        return int(tree[1])
+        try:
+            return int(tree[1])
+        except ValueError:
+            return float(tree[1])
     elif rule == 'string':
         return str(tree[1])
     elif rule == 'name':

@@ -12,7 +12,7 @@ class SwasLexer(Lexer):
     
     # Tokens
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
-    NUMBER = r'\d+'
+    NUMBER = r'\d+\.\d*'
 
     NAME['if'] = IF 
     NAME['else'] = ELSE
@@ -22,7 +22,7 @@ class SwasLexer(Lexer):
     NAME['inc'] = INC
     NAME['dec'] = DEC
     NAME['nothing'] = PASS
-    
+
     # Operators
     PLUS = r'\+'
     MINUS = r'-'
