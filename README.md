@@ -71,15 +71,15 @@ Operators are used to perform operations on variables and values.
 | <=       | Lesser than or equal to  | x <= y  |
 
 
-### Join Operator ( &&& )
-The Join Operator ( &&& ) lets you join 2 statements into 1. 
+### Join Operator ( & )
+The Join Operator ( & ) lets you join 2 statements into 1. 
 
 ### The Assignment Operator ( => )
 The Assignment Operator ( => ) is used to assign a variable to a value.
 
 Example
 ```
-output "Hi" &&& output "Bye"
+output "Hi" & output "Bye"
 ```
 
 ### If Else 
@@ -96,7 +96,7 @@ Note: The indentation isn't needed, it has been used here for readability
 
 Example
 ```
-name => "John" &&&
+name => "John" &
 if name == "John" =>
   output "hi " + name
 else =>
@@ -118,9 +118,9 @@ Note: The indentation isn't needed, it has been used here for readability
 Example 
 ```
 ignore This Program outputs numbers from 1 to 10
-start => 1 &&&
-end => 10 &&&
+start => 1 &
+end => 10 &
 while start != end
 do 
-  output start &&& inc start 
+  output start & inc start 
 ```

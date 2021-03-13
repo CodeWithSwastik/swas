@@ -33,7 +33,7 @@ class SwasLexer(Lexer):
     LPAREN = r'\('
     RPAREN = r'\)'
     MOD = r'%'
-    JOIN = r'&&&'
+    JOIN = r'&'
     EQ = r'=='
     GT = r'>'
     GTE = r'>='

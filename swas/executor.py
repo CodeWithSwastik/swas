@@ -1,7 +1,7 @@
 from .swas_lexer import SwasLexer
 from .swas_parser import SwasParser
 
-VERSION = "1.3"
+VERSION = "1.4"
 
 names = {}
 def evaluate(tree):
@@ -72,7 +72,11 @@ def evaluate(tree):
     elif rule == 'string':
         return str(tree[1])
     elif rule == 'name':
-        return names[tree[1]]
+        varname = tree[1]
+        try:
+            return names[varname]
+        except KeyError:
+            print(f"Swas says: {varname} hasn't been defined!")
     elif rule == 'paren':
         return evaluate(tree[1])
     elif rule == 'pass':
