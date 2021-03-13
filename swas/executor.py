@@ -96,6 +96,10 @@ def evaluate(tree):
     elif rule == 'input':
         value = evaluate(tree[1])
         res = input(value)
+        try:
+            res = float(res)
+        except ValueError:
+            pass
         return res
     elif rule == 'if-then':
         value = evaluate(tree[1])
