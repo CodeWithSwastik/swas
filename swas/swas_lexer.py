@@ -12,7 +12,8 @@ class SwasLexer(Lexer):
     
     # Tokens
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
-    NUMBER = r'\d+\.\d*'
+    
+    NUMBER = r'\d+\.{0,1}\d*'
 
     NAME['if'] = IF 
     NAME['else'] = ELSE
