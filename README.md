@@ -74,13 +74,14 @@ Operators are used to perform operations on variables and values.
 ### Join Operator ( & )
 The Join Operator ( & ) lets you join 2 statements into 1. 
 
-### The Assignment Operator ( => )
-The Assignment Operator ( => ) is used to assign a variable to a value.
-
 Example
 ```
 output "Hi" & output "Bye"
 ```
+
+### The Assignment Operator ( => )
+The Assignment Operator ( => ) is used to assign a variable to a value.
+
 
 ### If Else 
 An "if else statement" is written by using the if and else keywords.
