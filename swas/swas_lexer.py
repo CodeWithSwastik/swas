@@ -39,7 +39,7 @@ class SwasLexer(Lexer):
     LBRAC = r'\{'
     RBRAC = r'\}'
     MOD = r'%'
-    POW = r'^'
+    POW = r'\^'
     JOIN = r'&'
     EQ = r'=='
     GT = r'>'
