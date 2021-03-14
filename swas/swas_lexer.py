@@ -8,7 +8,7 @@ class SwasLexer(Lexer):
     
     # Ignored patterns
     ignore_newline = r'\n+'
-    ignore_comment = r'ignore.*\n*'
+    ignore_comment = r'//.*\n*'
     ignore = ' \t'
     
     # Tokens
