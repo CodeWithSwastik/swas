@@ -14,6 +14,9 @@ python -m swas [filename]
 ```
 The filename is optional, if no filename is provided it will run the shell.
 
+# Online IDE 
+If you don't want to use swas on your local machine you can try it out on the Online IDE: https://codewithswastik.github.io/swas/
+
 # Getting Started
 
 ## Hello World
