@@ -48,6 +48,14 @@ output y
 ### Case Sensitive 
 Note: Variables names are case sensitive i.e. `a => 5` is not the same as `A => 5`
 
+## Comments
+A Comment starts with a //, and anything after them will be ignored:
+```js
+//This is a comment
+output "Hello, World!"
+```
+
+
 ## Operators
 Operators are used to perform operations on variables and values.
 
