@@ -87,7 +87,7 @@ The Assignment Operator ( => ) is used to assign a variable to a value.
 An "if else statement" is written by using the if and else keywords.
 
 Syntax
-```js
+```cpp
 if condition => {
   statement 
 }
@@ -98,7 +98,7 @@ else => {
 Note: The indentation isn't needed, it has been used here for readability
 
 Example
-```js
+```cpp
 name => input "Enter your name: " &
 if name == "John" => {
   output "hi," + name 
