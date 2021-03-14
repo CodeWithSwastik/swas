@@ -8,7 +8,8 @@ class SwasParser(Parser):
         ('left', OR, AND), 
         ('left', EQ, LT , GT ,NE, GTE, LTE), 
         ('left', PLUS, MINUS),
-        ('left', TIMES, DIVIDE),      
+        ('left', TIMES, DIVIDE),   
+        ('left', POW), 
         ('left', MOD),
         ('right', UMINUS),
         ('left', WHILE, DO),
@@ -75,6 +76,10 @@ class SwasParser(Parser):
     def expr(self, p):
         return ('mod', p.expr0, p.expr1)
 
+    @_('expr POW expr')
+    def expr(self, p):
+        return ('pow', p.expr0, p.expr1)
+   
     @_('expr EQ expr')
     def expr(self, p):
         return ('equals', p.expr0, p.expr1)
