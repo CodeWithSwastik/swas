@@ -33,7 +33,7 @@ output "
 		nothing
 	} &
 
-	ignore inputs here
+	//inputs
 
 	bad_move_msg => "
 Illegal Move, type your move again!"&
@@ -132,7 +132,7 @@ Illegal Move, type your move again!"&
 	} 
 	&
 
-	ignore game over logic
+	//game over logic
 	if e != " " => {
 		if (a == e) and (e == i) => {
 			game_running => 0
@@ -195,7 +195,7 @@ Illegal Move, type your move again!"&
 		nothing
 	} &
 
-	ignore tie logic
+	//tie logic
 	if (a != " ") and (b != " ") and (c != " ") and (d != " ") and (e != " ") and (f != " ") and (g != " ") and (h != " ") and (i != " ") => {
 		game_running => 0 & no_tie => 0
 	}
