@@ -11,8 +11,7 @@ class handler(BaseHTTPRequestHandler):
         code_params = parse.parse_qs(parse.urlparse(self.path).query).get("code")
         if not code_params or not code_params[0]:
             self.send_response(400)
-            self.send_header("Content-type", "application/json")
-            self.end_headers()
+            self.set_headers()
             return self.wfile.write(
                 json.dumps({"error_message": "Missing field code"}).encode()
             )
@@ -32,8 +31,12 @@ class handler(BaseHTTPRequestHandler):
         data = {"stdout": stdout.decode(), "stderr": stderr.decode()}
 
         self.send_response(200)
-        self.send_header("Content-type", "application/json")
-        self.end_headers()
+        self.set_headers()
         self.wfile.write(json.dumps(data).encode())
 
         os.remove(tmpfile)
+
+    def set_headers(self):
+        self.send_header("Content-type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
