@@ -1,7 +1,7 @@
 from .swas_lexer import SwasLexer
 from .swas_parser import SwasParser
 
-VERSION = "1.5"
+VERSION = "1.6"
 
 names = {}
 def evaluate(tree):
@@ -33,7 +33,9 @@ def evaluate(tree):
         return evaluate(tree[1]) / evaluate(tree[2])
     elif rule == 'mod':
         return evaluate(tree[1]) % evaluate(tree[2])
-    
+    elif rule == 'pow':
+        return evaluate(tree[1]) ** evaluate(tree[2])
+            
     elif rule == 'equals':
         return int(evaluate(tree[1]) == evaluate(tree[2]))
     elif rule == 'ne':
