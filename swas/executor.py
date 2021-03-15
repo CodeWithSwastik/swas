@@ -6,6 +6,8 @@ VERSION = "1.6"
 names = {}
 def evaluate(tree):
     global names
+    type_error = "Swas says: You can't use '{op}' with types '{objtype1}' and '{objtype2}'!"
+    single_te = "Swas says: You can't use '{op}' with type '{objtype1}'!"
     try:
         rule = tree[0]
     except TypeError:
@@ -24,17 +26,41 @@ def evaluate(tree):
         return value
 
     elif rule == 'times':
-        return evaluate(tree[1]) * evaluate(tree[2])
+        try:
+            return evaluate(tree[1]) * evaluate(tree[2])
+        except TypeError:
+            return print(type_error.format(op="*", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
+                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
     elif rule == 'plus':
-        return evaluate(tree[1]) + evaluate(tree[2])
+        try:
+            return evaluate(tree[1]) + evaluate(tree[2])
+        except TypeError:
+            return print(type_error.format(op="+", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
+                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
     elif rule == 'minus':
-        return evaluate(tree[1]) - evaluate(tree[2])
+        try:
+            return evaluate(tree[1]) - evaluate(tree[2])
+        except TypeError:
+            return print(type_error.format(op="-", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
+                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
     elif rule == 'divide':
-        return evaluate(tree[1]) / evaluate(tree[2])
+        try:
+            return evaluate(tree[1]) / evaluate(tree[2])
+        except TypeError:
+            return print(type_error.format(op="/", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
+                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
     elif rule == 'mod':
-        return evaluate(tree[1]) % evaluate(tree[2])
+        try:
+            return evaluate(tree[1]) % evaluate(tree[2])
+        except TypeError:
+            return print(type_error.format(op="%", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
+                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
     elif rule == 'pow':
-        return evaluate(tree[1]) ** evaluate(tree[2])
+        try:
+            return evaluate(tree[1]) ** evaluate(tree[2])
+        except TypeError:
+            return print(type_error.format(op="^", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
+                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
             
     elif rule == 'equals':
         return int(evaluate(tree[1]) == evaluate(tree[2]))
@@ -63,10 +89,14 @@ def evaluate(tree):
             oldval = names[tree[1]]
         except KeyError:
             return print(f"Swas says: {name} hasn't been defined!")        
-        newval = oldval + 1
-        
-        names[name] = newval
-        return newval
+
+        try:
+            newval = oldval + 1
+            names[name] = newval
+            return newval
+        except TypeError:
+            return print(single_te.format(op="inc", objtype1=str(type(oldval)).split("'")[1]))
+
     elif rule == 'dec':
         name = tree[1]
         try:        
@@ -74,10 +104,13 @@ def evaluate(tree):
         except KeyError:
             return print(f"Swas says: {name} hasn't been defined!") 
 
-        newval = oldval - 1
-        
-        names[name] = newval
-        return newval
+        try:
+            newval = oldval - 1
+            names[name] = newval
+            return newval
+        except TypeError:
+            return print(single_te.format(op="dec", objtype1=str(type(oldval)).split("'")[1]))
+
     elif rule == 'number':
         try:
             return int(tree[1])
@@ -143,4 +176,3 @@ def shell():
             break
         tree = parser.parse(lexer.tokenize(text))
         evaluate(tree)
-
