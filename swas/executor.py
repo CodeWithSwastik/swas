@@ -1,13 +1,17 @@
 from .swas_lexer import SwasLexer
 from .swas_parser import SwasParser
 
-VERSION = "1.6"
+VERSION = "1.7"
 
 names = {}
+def get_obj_type(_obj):
+    return str(type(_obj)).split("'")[1]
+
 def evaluate(tree):
     global names
-    type_error = "Swas says: You can't use '{op}' with types '{objtype1}' and '{objtype2}'!"
-    single_te = "Swas says: You can't use '{op}' with type '{objtype1}'!"
+    undefined = "Swas says: {0} isn't been defined!"
+    type_error = "Swas says: You can't use '{op}' with types '{obj1}' and '{obj2}'!"
+    single_te = "Swas says: You can't use '{op}' with type '{obj}'!"
     try:
         rule = tree[0]
     except TypeError:
@@ -26,42 +30,47 @@ def evaluate(tree):
         return value
 
     elif rule == 'times':
+        multiplier = evaluate(tree[1])
+        multiplicand = evaluate(tree[2])
         try:
-            return evaluate(tree[1]) * evaluate(tree[2])
+            return multiplier * multiplicand
         except TypeError:
-            return print(type_error.format(op="*", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
-                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
+            return print(type_error.format(op="*", obj1=get_obj_type(multiplier), obj2=get_obj_type(multiplicand)))
     elif rule == 'plus':
+        addend1 = evaluate(tree[1])
+        addend2 = evaluate(tree[2])
         try:
-            return evaluate(tree[1]) + evaluate(tree[2])
+            return addend1 + addend2
         except TypeError:
-            return print(type_error.format(op="+", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
-                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
+            return print(type_error.format(op="+", obj1=get_obj_type(addend1), obj2=get_obj_type(addend2)))
     elif rule == 'minus':
+        minuend = evaluate(tree[1])
+        subtrahend = evaluate(tree[2])
         try:
-            return evaluate(tree[1]) - evaluate(tree[2])
+            return minuend - subtrahend
         except TypeError:
-            return print(type_error.format(op="-", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
-                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
+            return print(type_error.format(op="-", obj1=get_obj_type(minuend), obj2=get_obj_type(subtrahend)))
     elif rule == 'divide':
+        dividend = evaluate(tree[1])
+        divisor = evaluate(tree[2])
         try:
-            return evaluate(tree[1]) / evaluate(tree[2])
+            return dividend / divisor
         except TypeError:
-            return print(type_error.format(op="/", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
-                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
+            return print(type_error.format(op="/", obj1=get_obj_type(dividend), obj2=get_obj_type(divisor)))
     elif rule == 'mod':
+        a = evaluate(tree[1])
+        n = evaluate(tree[2])
         try:
-            return evaluate(tree[1]) % evaluate(tree[2])
+            return evaluate(a % n)
         except TypeError:
-            return print(type_error.format(op="%", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
-                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
+            return print(type_error.format(op="%", obj1=get_obj_type(a), obj2=get_obj_type(n)))
     elif rule == 'pow':
+        target_num = tree[1]
+        exponent = tree[2]
         try:
-            return evaluate(tree[1]) ** evaluate(tree[2])
+            return target_num ** exponent
         except TypeError:
-            return print(type_error.format(op="^", objtype1=str(type(evaluate(tree[1]))).split("'")[1],
-                                           objtype2=str(type(evaluate(tree[2]))).split("'")[1]))
-            
+            return print(type_error.format(op="^", obj1=get_obj_type(target_num), obj2=get_obj_type(exponent)))
     elif rule == 'equals':
         return int(evaluate(tree[1]) == evaluate(tree[2]))
     elif rule == 'ne':
@@ -79,38 +88,41 @@ def evaluate(tree):
     elif rule == 'or':
         return int(evaluate(tree[1]) or evaluate(tree[2]))
 
-
     elif rule == 'uminus':
-        return -evaluate(tree[1])
+        tar_neg_num = evaluate(tree[1])
+        try:
+            return -tar_neg_num
+        except TypeError:
+            return print(single_te.format(op="-", obj=get_obj_type(tar_neg_num)))
     elif rule == 'inc':
         name = tree[1]
 
         try:        
             oldval = names[tree[1]]
         except KeyError:
-            return print(f"Swas says: {name} hasn't been defined!")        
+            return print(undefined.format(name))
 
         try:
             newval = oldval + 1
-            names[name] = newval
-            return newval
         except TypeError:
-            return print(single_te.format(op="inc", objtype1=str(type(oldval)).split("'")[1]))
+            return print(single_te.format(op="inc", obj=get_obj_type(oldval)))
 
+        names[name] = newval
+        return newval
     elif rule == 'dec':
         name = tree[1]
         try:        
             oldval = names[tree[1]]
         except KeyError:
-            return print(f"Swas says: {name} hasn't been defined!") 
+            return print(undefined.format(name))
 
         try:
             newval = oldval - 1
-            names[name] = newval
-            return newval
         except TypeError:
-            return print(single_te.format(op="dec", objtype1=str(type(oldval)).split("'")[1]))
+            return print(single_te.format(op="dec", obj=get_obj_type(oldval)))
 
+        names[name] = newval
+        return newval
     elif rule == 'number':
         try:
             return int(tree[1])
@@ -123,7 +135,7 @@ def evaluate(tree):
         try:
             return names[varname]
         except KeyError:
-            print(f"Swas says: {varname} hasn't been defined!")
+            print(undefined.format(varname))
     elif rule == 'paren':
         return evaluate(tree[1])
     elif rule == 'pass':
@@ -140,18 +152,18 @@ def evaluate(tree):
         except ValueError:
             pass
         return res
-    elif rule == 'if-then':
-        value = evaluate(tree[1])
-        if value:
+    elif rule == 'if-elif-else':
+        expr1 = evaluate(tree[1])
+        expr2 = None if tree[3] is None else evaluate(tree[3])
+        if expr1:
             return evaluate(tree[2])
+        elif expr2:
+            return evaluate(tree[4])
         else:
-            return 0
-    elif rule == 'if-else':
-        value = evaluate(tree[1])
-        if value:
-            return evaluate(tree[2])
-        else:
-            return evaluate(tree[3])
+            if tree[5]:
+                return evaluate(tree[5])
+            else:
+                pass
     elif rule == 'while':
         while evaluate(tree[1]):
             evaluate(tree[2])
