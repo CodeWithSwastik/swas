@@ -1,0 +1,12 @@
+README.md
+setup.py
+swas/__init__.py
+swas/__main__.py
+swas/executor.py
+swas/swas_lexer.py
+swas/swas_parser.py
+swas.egg-info/PKG-INFO
+swas.egg-info/SOURCES.txt
+swas.egg-info/dependency_links.txt
+swas.egg-info/requires.txt
+swas.egg-info/top_level.txt
