@@ -14,7 +14,7 @@ class SwasParser(Parser):
         ('right', UMINUS),
         ('left', WHILE, DO),
         ('left', JOIN),
-        ('left', IF, ELIF ,ELSE),        
+        ('left', IF, ELIF, ELSE),  
         ('left', PRINT, INPUT)
         )
 
@@ -43,7 +43,7 @@ class SwasParser(Parser):
     def statement(self, p):
         return ('assign', p.NAME, p.statement)
 
-    @_('IF expr LBRAC statement RBRAC [ ELIF expr LBRAC statement RBRAC ] ELSE LBRAC statement RBRAC')
+    @_('IF expr LBRAC statement RBRAC [ ELIF expr LBRAC statement RBRAC ] [ ELSE LBRAC statement RBRAC ] ')
     def statement(self, p):
         return ('if-elif-else', p.expr0 ,p.statement0, p.expr1, p.statement1, p.statement2)
 

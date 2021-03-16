@@ -108,7 +108,6 @@ def evaluate(tree):
             pass
         return res
     elif rule == 'if-elif-else':
-        print(tree)
         expr1 = evaluate(tree[1])
         expr2 = None if tree[3] is None else evaluate(tree[3])
         if expr1:
@@ -116,7 +115,10 @@ def evaluate(tree):
         elif expr2:
             return evaluate(tree[4])
         else:
-            return evaluate(tree[5])
+            if tree[5]:
+                return evaluate(tree[5])
+            else:
+                pass
     elif rule == 'while':
         while evaluate(tree[1]):
             evaluate(tree[2])
