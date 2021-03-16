@@ -9,18 +9,18 @@ do {
 
    while i < num
    do {
-       if (num % i) == 0 => {
+       if (num % i) == 0 {
         did_break => 1
         }
-       else =>
+       else
         { nothing }
        &
        inc i
    }
    &
-   if (did_break == 0) =>
+   if (did_break == 0)
     { output num }
-   else =>
+   else 
     { nothing }
    &
    inc num

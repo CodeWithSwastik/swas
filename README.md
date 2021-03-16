@@ -102,10 +102,10 @@ An "if else statement" is written by using the if and else keywords.
 
 Syntax
 ```cpp
-if condition => {
+if condition {
   statement 
 }
-else => {
+else {
   statement 
 }
 ```
@@ -114,10 +114,10 @@ Note: The indentation isn't needed, it has been used here for readability
 Example
 ```cpp
 name => input "Enter your name: " &
-if name == "John" => {
+if name == "John" {
   output "hi," + name 
 }
-else => {
+else {
   output "bye," + name 
 }
 ```

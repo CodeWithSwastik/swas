@@ -5,9 +5,9 @@ counter => 0 &
 while counter < precision
 do {
     odd => (2 * counter + 1) &
-    if (counter % 2 == 0) => 
+    if (counter % 2 == 0)
         { total => total + 1/odd }
-    else => 
+    else 
         { total => total - 1/odd } &
     inc counter
 } &
