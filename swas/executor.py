@@ -4,6 +4,7 @@ from .swas_parser import SwasParser
 VERSION = "1.8"
 
 names = {}
+
 def get_obj_type(_obj):
     return str(type(_obj)).split("'")[1]
 
@@ -21,8 +22,10 @@ def evaluate(tree):
     if rule == 'main':
         evaluate(tree[1])
     elif rule == 'statements':
+        results = []
         for i in tree[1]:
-            evaluate(i)
+            results.append(evaluate(i))
+        return results
     elif rule == 'statement-expr':
         value = evaluate(tree[1])
         return value
@@ -134,6 +137,8 @@ def evaluate(tree):
         return evaluate(tree[1])
     elif rule == 'pass':
         pass
+    elif rule == 'break':
+        return Break()
     elif rule == 'print':
         value = evaluate(tree[1])
         print(value)
@@ -160,7 +165,15 @@ def evaluate(tree):
                 pass
     elif rule == 'while':
         while evaluate(tree[1]):
-            evaluate(tree[2])
+            results = evaluate(tree[2])
+            
+            if any([isinstance(res,Break) for res in results]):
+                break
+    else:
+        print(rule)
+
+class Break:
+    pass
 
 def execute(fp):
     with open(fp, "r") as f:

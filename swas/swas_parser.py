@@ -3,7 +3,7 @@ from .swas_lexer import SwasLexer
 
 class SwasParser(Parser):
     tokens = SwasLexer.tokens
-    debugfile = "log.out"
+    #debugfile = "log.out"
     precedence = (
         ('left', OR, AND), 
         ('left', EQ, LT , GT ,NE, GTE, LTE), 
@@ -68,7 +68,11 @@ class SwasParser(Parser):
 
     @_('PASS')
     def statement(self, p):
-        return ('pass')
+        return ('pass',)
+
+    @_('BREAK')
+    def statement(self, p):
+        return ('break',)
 
     ############################################################
     # Expressions
