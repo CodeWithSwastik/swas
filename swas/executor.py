@@ -4,12 +4,19 @@ from .swas_parser import SwasParser
 VERSION = "1.8"
 
 names = {}
+def get_obj_type(_obj):
+    return str(type(_obj)).split("'")[1]
+
 def evaluate(tree):
     global names
+    undefined = "Swas says: {0} isn't been defined!"
+    type_error = "Swas says: You can't use '{op}' with types '{obj1}' and '{obj2}'!"
+    single_te = "Swas says: You can't use '{op}' with type '{obj}'!"
+
     try:
         rule = tree[0]
     except TypeError:
-        return print("Swas says: Error Above ^^^^^^")
+        return print("Swas says: Error!!")
 
     if rule == 'main':
         evaluate(tree[1])
@@ -26,17 +33,47 @@ def evaluate(tree):
         return value
 
     elif rule == 'times':
-        return evaluate(tree[1]) * evaluate(tree[2])
+        multiplier = evaluate(tree[1])
+        multiplicand = evaluate(tree[2])
+        try:
+            return multiplier * multiplicand
+        except TypeError:
+            return print(type_error.format(op="*", obj1=get_obj_type(multiplier), obj2=get_obj_type(multiplicand)))
     elif rule == 'plus':
-        return evaluate(tree[1]) + evaluate(tree[2])
+        addend1 = evaluate(tree[1])
+        addend2 = evaluate(tree[2])
+        try:
+            return addend1 + addend2
+        except TypeError:
+            return print(type_error.format(op="+", obj1=get_obj_type(addend1), obj2=get_obj_type(addend2)))
     elif rule == 'minus':
-        return evaluate(tree[1]) - evaluate(tree[2])
+        minuend = evaluate(tree[1])
+        subtrahend = evaluate(tree[2])
+        try:
+            return minuend - subtrahend
+        except TypeError:
+            return print(type_error.format(op="-", obj1=get_obj_type(minuend), obj2=get_obj_type(subtrahend)))
     elif rule == 'divide':
-        return evaluate(tree[1]) / evaluate(tree[2])
+        dividend = evaluate(tree[1])
+        divisor = evaluate(tree[2])
+        try:
+            return dividend / divisor
+        except TypeError:
+            return print(type_error.format(op="/", obj1=get_obj_type(dividend), obj2=get_obj_type(divisor)))
     elif rule == 'mod':
-        return evaluate(tree[1]) % evaluate(tree[2])
+        a = evaluate(tree[1])
+        n = evaluate(tree[2])
+        try:
+            return evaluate(a % n)
+        except TypeError:
+            return print(type_error.format(op="%", obj1=get_obj_type(a), obj2=get_obj_type(n)))
     elif rule == 'pow':
-        return evaluate(tree[1]) ** evaluate(tree[2])
+        target_num = tree[1]
+        exponent = tree[2]
+        try:
+            return target_num ** exponent
+        except TypeError:
+            return print(type_error.format(op="^", obj1=get_obj_type(target_num), obj2=get_obj_type(exponent)))
             
     elif rule == 'equals':
         return int(evaluate(tree[1]) == evaluate(tree[2]))
