@@ -34,7 +34,6 @@ class SwasLexer(Lexer):
     MINUS = r'-'
     TIMES = r'\*'
     DIVIDE = r'/'
-    ARROW = r'=>'
     LPAREN = r'\('
     RPAREN = r'\)'
     LBRAC = r'\{'
@@ -47,7 +46,7 @@ class SwasLexer(Lexer):
     LT = r'<'
     LTE = r'<='
     NE = r'!='
-
+    ARROW = r'='
 
     # String
     @_(r'''("[^"\\]*(\\.[^"\\]*)*"|'[^'\\]*(\\.[^'\\]*)*')''')

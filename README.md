@@ -36,8 +36,8 @@ Swas has no command for declaring a variable.
 A variable is created the moment you first assign a value to it.
 
 ```js
-x => 5
-y => "Mark"
+x = 5
+y = "Mark"
 ```
 
 ### Using Variables
@@ -49,7 +49,7 @@ output y
 ```
 
 ### Case Sensitive 
-Note: Variables names are case sensitive i.e. `a => 5` is not the same as `A => 5`
+Note: Variables names are case sensitive i.e. `a = 5` is not the same as `A = 5`
 
 ## Comments
 A Comment starts with a //, and anything after them will be ignored:
@@ -90,8 +90,8 @@ Example
 output "Hi" & output "Bye"
 ```
 
-### The Assignment Operator ( => )
-The Assignment Operator ( => ) is used to assign a variable to a value.
+### The Assignment Operator ( = )
+The Assignment Operator ( = ) is used to assign a variable to a value.
 
 
 ### If Else 
@@ -110,7 +110,7 @@ Note: The indentation isn't needed, it has been used here for readability
 
 Example
 ```cpp
-name => input "Enter your name: "
+name = input "Enter your name: "
 if name == "John" {
   output "hi," + name 
 }
@@ -134,8 +134,8 @@ Note: The indentation isn't needed, it has been used here for readability
 
 Example
 ```cpp
-start => 1 
-end => 10 
+start = 1 
+end = 10 
 
 while start != end
 do {
