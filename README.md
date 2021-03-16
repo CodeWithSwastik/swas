@@ -85,10 +85,6 @@ Operators are used to perform operations on variables and values.
 | <=       | Lesser than or equal to  | x <= y  |
 
 
-Example
-```js
-output "Hi" & output "Bye"
-```
 
 ### The Assignment Operator ( => )
 The Assignment Operator ( => ) is used to assign a variable to a value.
