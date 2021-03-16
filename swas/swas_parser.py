@@ -3,7 +3,7 @@ from .swas_lexer import SwasLexer
 
 class SwasParser(Parser):
     tokens = SwasLexer.tokens
-    #debugfile = "log.out"
+    debugfile = "log.out"
     precedence = (
         ('left', OR, AND), 
         ('left', EQ, LT , GT ,NE, GTE, LTE), 
@@ -13,7 +13,6 @@ class SwasParser(Parser):
         ('left', MOD),
         ('right', UMINUS),
         ('left', WHILE, DO),
-        ('left', JOIN),
         ('left', IF, ELIF, ELSE),  
         ('left', PRINT, INPUT)
         )
@@ -22,6 +21,27 @@ class SwasParser(Parser):
         self.names = { }
         self.prompt = True
 
+    ############################################################
+    # MAIN
+    ############################################################
+
+    @_('statements')
+    def main(self, p):
+        return ('main', p.statements)
+
+    @_('statement')
+    def statements(self,p):
+        return ('statements', [p.statement])
+
+    @_('statements statement')
+    def statements(self,p):
+        print(p.statements[1] + [p.statement])
+        return ('statements', p.statements[1] + [p.statement])
+
+
+    ############################################################
+    # STATEMENTS
+    ############################################################
 
     @_('PRINT statement')
     def statement(self, p):
@@ -31,10 +51,6 @@ class SwasParser(Parser):
     def statement(self, p):
         return ('input', p.statement)
 
-    @_('statement JOIN statement')
-    def statement(self, p):
-        return ('join-statement', p.statement0, p.statement1) 
-
     @_('expr')
     def statement(self, p):
         return ('statement-expr', p.expr)
@@ -43,17 +59,22 @@ class SwasParser(Parser):
     def statement(self, p):
         return ('assign', p.NAME, p.statement)
 
-    @_('IF expr LBRAC statement RBRAC [ ELIF expr LBRAC statement RBRAC ] [ ELSE LBRAC statement RBRAC ] ')
+    @_('IF expr LBRAC statements RBRAC [ ELIF expr LBRAC statements RBRAC ] [ ELSE LBRAC statements RBRAC ] ')
     def statement(self, p):
-        return ('if-elif-else', p.expr0 ,p.statement0, p.expr1, p.statement1, p.statement2)
+        return ('if-elif-else', p.expr0 ,p.statements0, p.expr1, p.statements1, p.statements2)
 
-    @_('WHILE expr DO LBRAC statement RBRAC')
+    @_('WHILE expr DO LBRAC statements RBRAC')
     def statement(self, p):
-        return ('while', p.expr, p.statement)
+        return ('while', p.expr, p.statements)
 
     @_('PASS')
     def statement(self, p):
         return ('pass')
+
+    ############################################################
+    # Expressions
+    ############################################################
+
 
     @_('expr PLUS expr')
     def expr(self, p):
@@ -120,9 +141,10 @@ class SwasParser(Parser):
     def expr(self, p):
         return ('dec', p.NAME)    
 
-    @_('MINUS expr %prec UMINUS')
-    def expr(self, p):
-        return ('uminus', p.expr)
+    # Weird
+    # @_('MINUS expr %prec UMINUS')
+    # def expr(self, p):
+    #     return ('uminus', p.expr)
 
     @_('LPAREN expr RPAREN')
     def expr(self, p):
