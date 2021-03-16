@@ -1,0 +1,5 @@
+__author__ = "Swas.py"
+__title__ = "swas"
+__license__ = "MIT"
+__copyright__ = "Copyright 2021 Swas.py"
+__version__ = "1.8"

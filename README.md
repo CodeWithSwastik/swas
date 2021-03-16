@@ -1,15 +1,12 @@
 # The Swas programming language
 This is a language that was made for fun. It is completely written in python. <br>
 
-`Latest Version: 1.8`
+`Latest Version: 1.8.1`
 
 # Installation
-Step 0: Make sure you have python installed <br>
-Step 1. Clone this repo or download it as a zip <br>
-```
-git clone https://github.com/CodeWithSwastik/swas
-```
-Step 2. Run `pip install -r requirements.txt`
+
+Stable Release: `pip install swas`
+Working Version: `pip install git+https://github.com/CodeWithSwastik/swas.git`
 
 This is all that you need to do to start writing in swas lang.
 
