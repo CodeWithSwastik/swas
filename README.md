@@ -4,12 +4,15 @@ This is a language that was made for fun.
 # Installation
 Step 0: Make sure you have python installed <br>
 Step 1. Clone this repo or download it as a zip <br>
+```
+git clone https://github.com/CodeWithSwastik/swas
+```
 Step 2. Run `pip install -r requirements.txt`
 
 This is all that you need to do to start writing in swas lang.
 
 # Running 
-```bash
+```
 python -m swas [filename]
 ```
 The filename is optional, if no filename is provided it will run the shell.
