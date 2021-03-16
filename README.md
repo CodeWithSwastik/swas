@@ -5,7 +5,7 @@ This is a language that was made for fun. It is completely written in python. <b
 
 # Installation
 
-Stable Release: `pip install swas`
+Stable Release: `pip install swas` <br>
 Working Version: `pip install git+https://github.com/CodeWithSwastik/swas.git`
 
 This is all that you need to do to start writing in swas lang.
