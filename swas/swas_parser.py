@@ -35,7 +35,6 @@ class SwasParser(Parser):
 
     @_('statements statement')
     def statements(self,p):
-        print(p.statements[1] + [p.statement])
         return ('statements', p.statements[1] + [p.statement])
 
 

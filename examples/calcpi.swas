@@ -1,16 +1,16 @@
-precision => 100000 &
-total => 0 &
-counter => 0 &
+precision => 100000 
+total => 0 
+counter => 0 
 
 while counter < precision
 do {
-    odd => (2 * counter + 1) &
+    odd => (2 * counter + 1) 
     if (counter % 2 == 0)
         { total => total + 1/odd }
     else 
-        { total => total - 1/odd } &
+        { total => total - 1/odd } 
     inc counter
-} &
+} 
 
-pi => 4 * total &
+pi => 4 * total 
 output pi

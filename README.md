@@ -85,9 +85,6 @@ Operators are used to perform operations on variables and values.
 | <=       | Lesser than or equal to  | x <= y  |
 
 
-### Join Operator ( & )
-The Join Operator ( & ) lets you join 2 statements into 1. 
-
 Example
 ```js
 output "Hi" & output "Bye"
@@ -113,7 +110,7 @@ Note: The indentation isn't needed, it has been used here for readability
 
 Example
 ```cpp
-name => input "Enter your name: " &
+name => input "Enter your name: "
 if name == "John" {
   output "hi," + name 
 }
@@ -137,11 +134,12 @@ Note: The indentation isn't needed, it has been used here for readability
 
 Example
 ```cpp
-start => 1 &
-end => 10 &
+start => 1 
+end => 10 
 
 while start != end
 do {
-  output start & inc start 
+  output start
+  inc start 
 }
 ```

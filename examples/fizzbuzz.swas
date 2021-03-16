@@ -1,5 +1,5 @@
-num => 101 &
-counter => 1 &
+num => 101 
+counter => 1 
 
 while counter < num 
 do {
@@ -15,6 +15,6 @@ do {
         else
             { output counter }
     }
-    &
+    
     inc counter
 }
