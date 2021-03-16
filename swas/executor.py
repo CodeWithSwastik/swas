@@ -1,7 +1,7 @@
 from .swas_lexer import SwasLexer
 from .swas_parser import SwasParser
 
-VERSION = "1.6"
+VERSION = "1.7"
 
 names = {}
 def evaluate(tree):
@@ -107,18 +107,16 @@ def evaluate(tree):
         except ValueError:
             pass
         return res
-    elif rule == 'if-then':
-        value = evaluate(tree[1])
-        if value:
+    elif rule == 'if-elif-else':
+        print(tree)
+        expr1 = evaluate(tree[1])
+        expr2 = None if tree[3] is None else evaluate(tree[3])
+        if expr1:
             return evaluate(tree[2])
+        elif expr2:
+            return evaluate(tree[4])
         else:
-            return 0
-    elif rule == 'if-else':
-        value = evaluate(tree[1])
-        if value:
-            return evaluate(tree[2])
-        else:
-            return evaluate(tree[3])
+            return evaluate(tree[5])
     elif rule == 'while':
         while evaluate(tree[1]):
             evaluate(tree[2])
