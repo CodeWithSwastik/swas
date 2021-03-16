@@ -67,17 +67,17 @@ def evaluate(tree):
         a = evaluate(tree[1])
         n = evaluate(tree[2])
         try:
-            return evaluate(a % n)
+            return a % n
         except TypeError:
             return print(type_error.format(op="%", obj1=get_obj_type(a), obj2=get_obj_type(n)))
     elif rule == 'pow':
-        target_num = tree[1]
-        exponent = tree[2]
+        target_num = evaluate(tree[1])
+        exponent = evaluate(tree[2])
         try:
             return target_num ** exponent
         except TypeError:
             return print(type_error.format(op="^", obj1=get_obj_type(target_num), obj2=get_obj_type(exponent)))
-            
+    
     elif rule == 'equals':
         return int(evaluate(tree[1]) == evaluate(tree[2]))
     elif rule == 'ne':
