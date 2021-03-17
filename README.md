@@ -72,6 +72,7 @@ Operators are used to perform operations on variables and values.
 | %        | Modulus        | x % y   |
 | inc      | Increment      | inc x   |
 | dec      | Decrement      | dec x   |
+| ^        | Exponents      | x ^ y   |
 
 ### Logical Operators
 | Operator | Name                     | Example |
@@ -137,4 +138,19 @@ do {
   output start
   inc start 
 }
+```
+
+### Lists/Arrays
+List/Array is a data structure consisting of a collection of values or variables. A list can be created using square brackets ([])
+
+Syntax
+```cpp
+list = []
+```
+
+Note: The indentation isn't needed, it has been used here for readability
+
+Example
+```cpp
+list = [1,2,3,4,5]
 ```
