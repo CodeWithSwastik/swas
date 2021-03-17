@@ -1,2 +1,4 @@
 **/__pycache__
+/swas.egg-info
+/dist
 log.out
