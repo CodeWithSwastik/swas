@@ -78,6 +78,17 @@ class SwasParser(Parser):
     # Expressions
     ############################################################
 
+    @_(' "[" params "]"')
+    def expr(self,p):
+        return ('list', p.params)
+
+    @_('params COMMA expr')
+    def params(self,p):
+        return ('params', p.params[1] + [p.expr])
+
+    @_('expr')
+    def params(self,p):
+        return ('params', [p.expr])
 
     @_('expr PLUS expr')
     def expr(self, p):

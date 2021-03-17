@@ -126,7 +126,13 @@ def evaluate(tree):
         except ValueError:
             return float(tree[1])
     elif rule == 'string':
-        return str(tree[1])
+        return str(tree)
+    elif rule == 'list':
+        #print(tree)
+        results = []
+        for i in tree[1][1]:
+            results.append(evaluate(i))
+        return results
     elif rule == 'name':
         varname = tree[1]
         try:
@@ -170,8 +176,8 @@ def evaluate(tree):
             if any([isinstance(res,Break) for res in results]):
                 break
     else:
-        print(rule)
-
+        #print(rule, tree)
+        pass
 class Break:
     pass
 

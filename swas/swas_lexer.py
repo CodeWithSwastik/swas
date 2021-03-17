@@ -4,13 +4,14 @@ from sly import Lexer
 class SwasLexer(Lexer):
     tokens = { NAME, NUMBER, PLUS, TIMES, MINUS, DIVIDE, MOD, POW, ARROW, LPAREN, RPAREN,
                IF, ELIF, ELSE, WHILE, DO, BREAK, STRING, PRINT, INPUT, INC, DEC, EQ, GT, GTE, LT, LTE, NE, PASS,
-               LBRAC, RBRAC, OR, AND}
+               LBRAC, RBRAC, OR, AND, COMMA}
     
     # Ignored patterns
     ignore_newline = r'\n+'
     ignore_comment = r'//.*\n*'
     ignore = ' \t'
     
+
     # Tokens
     NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
     
@@ -30,6 +31,8 @@ class SwasLexer(Lexer):
     NAME['and'] = AND
     NAME['or'] = OR
 
+    literals = { '[', ']', '(' , ')' }
+
     # Operators
     PLUS = r'\+'
     MINUS = r'-'
@@ -48,6 +51,7 @@ class SwasLexer(Lexer):
     LTE = r'<='
     NE = r'!='
     ARROW = r'='
+    COMMA = r','
 
     # String
     @_(r'''("[^"\\]*(\\.[^"\\]*)*"|'[^'\\]*(\\.[^'\\]*)*')''')
