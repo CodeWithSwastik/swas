@@ -2,7 +2,7 @@ from sys import argv
 from setuptools import setup, find_packages
 
 
-if sys.argv[1] in ('install', 'build', 'sdist', 'bdist_wheel'):
+if argv[1] in ('install', 'build', 'sdist', 'bdist_wheel'):
   pass #will add file assoc soon  
 
  
