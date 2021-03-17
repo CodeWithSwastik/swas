@@ -5,6 +5,7 @@ class SwasParser(Parser):
     tokens = SwasLexer.tokens
     #debugfile = "log.out"
     precedence = (
+        ('right', COLON),
         ('left', OR, AND), 
         ('left', EQ, LT , GT ,NE, GTE, LTE), 
         ('left', PLUS, MINUS),
@@ -159,6 +160,11 @@ class SwasParser(Parser):
     # @_('MINUS expr %prec UMINUS')
     # def expr(self, p):
     #     return ('uminus', p.expr)
+
+    @_('expr ":" expr %prec COLON')
+    def expr(self, p):
+        return ('index', p.expr0, p.expr1)
+
 
     @_('LPAREN expr RPAREN')
     def expr(self, p):

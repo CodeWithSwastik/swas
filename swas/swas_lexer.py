@@ -31,7 +31,7 @@ class SwasLexer(Lexer):
     NAME['and'] = AND
     NAME['or'] = OR
 
-    literals = { '[', ']', '(' , ')' }
+    literals = { '[', ']', '(' , ')', ':' }
 
     # Operators
     PLUS = r'\+'

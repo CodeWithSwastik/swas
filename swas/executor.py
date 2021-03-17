@@ -1,7 +1,7 @@
 from .swas_lexer import SwasLexer
 from .swas_parser import SwasParser
 
-VERSION = "1.8"
+VERSION = "1.8.3"
 
 names = {}
 
@@ -10,7 +10,7 @@ def get_obj_type(_obj):
 
 def evaluate(tree):
     global names
-    undefined = "Swas says: {0} isn't been defined!"
+    undefined = "Swas says: {0} hasn't been defined!"
     type_error = "Swas says: You can't use '{op}' with types '{obj1}' and '{obj2}'!"
     single_te = "Swas says: You can't use '{op}' with type '{obj}'!"
 
@@ -114,7 +114,7 @@ def evaluate(tree):
         try:        
             oldval = names[tree[1]]
         except KeyError:
-            return print(f"Swas says: {name} hasn't been defined!") 
+            return print(undefined.format(varname)) 
 
         newval = oldval - 1
         
@@ -126,7 +126,7 @@ def evaluate(tree):
         except ValueError:
             return float(tree[1])
     elif rule == 'string':
-        return str(tree)
+        return str(tree[1])
     elif rule == 'list':
         #print(tree)
         results = []
@@ -138,7 +138,16 @@ def evaluate(tree):
         try:
             return names[varname]
         except KeyError:
-            print(f"Swas says: {varname} hasn't been defined!")
+            print(undefined.format(varname))
+    elif rule == 'index':
+        op = evaluate(tree[1])
+        index = evaluate(tree[2])
+        try:
+            return op[index]
+        except IndexError as e:
+            print(f'Swas says: {e}')
+        except TypeError as e:
+            print(f'Says says: Only lists and strings can be indexed')
     elif rule == 'paren':
         return evaluate(tree[1])
     elif rule == 'pass':

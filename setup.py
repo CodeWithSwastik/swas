@@ -15,7 +15,7 @@ classifiers = [
 
 setup(
   name='swas',
-  version='1.8.2',
+  version='1.8.3',
   description='A Progamming Language.',
   long_description=open('README.md').read(),
   long_description_content_type = "text/markdown",
