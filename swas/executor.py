@@ -1,7 +1,7 @@
 from .swas_lexer import SwasLexer
 from .swas_parser import SwasParser
 
-VERSION = "1.8.3"
+VERSION = "2.0.0"
 
 names = {}
 

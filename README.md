@@ -1,7 +1,8 @@
 # The Swas programming language
 This is a language that was made for fun. It is completely written in python. <br>
 
-`Latest Version: 1.8.3`
+`Working Version: 2.0.0`
+`Latest Stable Version: 1.8.3`
 
 # Installation
 

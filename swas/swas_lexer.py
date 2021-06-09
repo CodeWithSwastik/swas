@@ -1,4 +1,3 @@
-
 from sly import Lexer
 
 class SwasLexer(Lexer):
