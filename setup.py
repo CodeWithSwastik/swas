@@ -30,6 +30,6 @@ setup(
   classifiers=classifiers,
   keywords='swas,language,swas lang', 
   packages=find_packages(),
-  install_requires= ['sly'],
+  install_requires= ['sly', 'click'],
   python_requires='>=3.6'
 )

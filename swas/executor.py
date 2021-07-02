@@ -190,10 +190,7 @@ def evaluate(tree):
 class Break:
     pass
 
-def execute(fp):
-    with open(fp, "r") as f:
-        text = f.read()
-
+def execute(text):
     lexer = SwasLexer()
     parser = SwasParser()
     tree = parser.parse(lexer.tokenize(text))
