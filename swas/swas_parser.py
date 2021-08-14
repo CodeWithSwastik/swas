@@ -1,3 +1,6 @@
+# type: ignore
+
+
 from sly import Parser
 from .swas_lexer import SwasLexer
 

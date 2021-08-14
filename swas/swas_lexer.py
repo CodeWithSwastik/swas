@@ -1,3 +1,6 @@
+# type: ignore
+
+
 from sly import Lexer
 
 class SwasLexer(Lexer):

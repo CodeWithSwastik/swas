@@ -114,7 +114,7 @@ def evaluate(tree):
         try:        
             oldval = names[tree[1]]
         except KeyError:
-            return print(undefined.format(varname)) 
+            return print(undefined.format(name)) 
 
         newval = oldval - 1
         
